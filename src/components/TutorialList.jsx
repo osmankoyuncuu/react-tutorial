@@ -1,20 +1,29 @@
 import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
+import axios from "axios";
+import EditTutorial from "./EditTutorial";
 
-const TutorialList = () => {
-  const tutorials = [
-    {
-      id: 1,
-      title: "JS",
-      description: "JS is a programming language",
-    },
-    {
-      id: 2,
-      title: "React",
-      description: "JS library for UI design",
-    },
-  ];
-
+const TutorialList = ({ tutorials, getTutorials }) => {
+  //!DELETE (CRUD-Delete)
+  const deleteTutorial = async (id) => {
+    const url = "https://cw-axios-example.herokuapp.com/api/tutorials";
+    try {
+      await axios.delete(`${url}/${id}`);
+    } catch (error) {
+      console.log(error);
+    }
+    getTutorials();
+  };
+  //! EDIT (CRUD-Edit)
+  const editTutorial = async ({ id, description, title }) => {
+    const url = "https://cw-axios-example.herokuapp.com/api/tutorials";
+    try {
+      await axios.put(`${url}/${id}`, { title, description });
+    } catch (error) {
+      console.log(error);
+    }
+    getTutorials();
+  };
   return (
     <div className="container mt-4">
       <table className="table table-striped">
@@ -40,12 +49,16 @@ const TutorialList = () => {
                   <FaEdit
                     size={20}
                     type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editModal"
                     className="me-2 text-warning"
+                    onClick={() => editTutorial(item)}
                   />
                   <AiFillDelete
                     size={22}
                     type="button"
                     className="text-danger "
+                    onClick={() => deleteTutorial(id)}
                   />
                 </td>
               </tr>
@@ -53,6 +66,7 @@ const TutorialList = () => {
           })}
         </tbody>
       </table>
+      <EditTutorial tutorials={tutorials} />
     </div>
   );
 };
