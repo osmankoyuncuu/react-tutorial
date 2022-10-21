@@ -2,8 +2,14 @@ import { FaEdit } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import axios from "axios";
 import EditTutorial from "./EditTutorial";
+import { useState } from "react";
 
 const TutorialList = ({ tutorials, getTutorials }) => {
+  const [modal, setModal] = useState({
+    id: "",
+    title: "",
+    description: "",
+  });
   //!DELETE (CRUD-Delete)
   const deleteTutorial = async (id) => {
     const url = "https://cw-axios-example.herokuapp.com/api/tutorials";
@@ -15,7 +21,16 @@ const TutorialList = ({ tutorials, getTutorials }) => {
     getTutorials();
   };
   //! EDIT (CRUD-Edit)
-  const editTutorial = async ({ id, description, title }) => {
+  const editFunc = ({ id, description, title }) => {
+    setModal({ id, title, description });
+  };
+
+  const handleSave = () => {
+    const { id, title, description } = modal;
+    editTutorial(id, title, description);
+  };
+
+  const editTutorial = async (id, description, title) => {
     const url = "https://cw-axios-example.herokuapp.com/api/tutorials";
     try {
       await axios.put(`${url}/${id}`, { title, description });
@@ -24,6 +39,7 @@ const TutorialList = ({ tutorials, getTutorials }) => {
     }
     getTutorials();
   };
+
   return (
     <div className="container mt-4">
       <table className="table table-striped">
@@ -52,7 +68,7 @@ const TutorialList = ({ tutorials, getTutorials }) => {
                     data-bs-toggle="modal"
                     data-bs-target="#editModal"
                     className="me-2 text-warning"
-                    onClick={() => editTutorial(item)}
+                    onClick={() => editFunc(item)}
                   />
                   <AiFillDelete
                     size={22}
@@ -66,7 +82,7 @@ const TutorialList = ({ tutorials, getTutorials }) => {
           })}
         </tbody>
       </table>
-      <EditTutorial tutorials={tutorials} />
+      <EditTutorial modal={modal} setModal={setModal} handleSave={handleSave} />
     </div>
   );
 };
