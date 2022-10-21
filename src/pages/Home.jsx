@@ -29,7 +29,7 @@ const Home = () => {
         <Loading />
       ) : (
         <div>
-          <AddTutorial getTutorials={getTutorials} />
+          <AddTutorial getTutorials={getTutorials} className="tutorial" />
           <TutorialList tutorials={tutorials} getTutorials={getTutorials} />
         </div>
       )}
