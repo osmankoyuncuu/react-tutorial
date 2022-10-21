@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/react-tutorial/static/css/main.813f54fb.css",
+    "main.js": "/react-tutorial/static/js/main.b80082c6.js",
+    "static/media/loading.gif": "/react-tutorial/static/media/loading.63d7da1bc33c0063002c.gif",
+    "index.html": "/react-tutorial/index.html",
+    "main.813f54fb.css.map": "/react-tutorial/static/css/main.813f54fb.css.map",
+    "main.b80082c6.js.map": "/react-tutorial/static/js/main.b80082c6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.813f54fb.css",
+    "static/js/main.b80082c6.js"
+  ]
+}
