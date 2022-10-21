@@ -1,8 +1,44 @@
+## Check The Live Website ➡️ [Live Website](https://osmankoyuncuu.github.io/react-tutorial/)
+
+## Animation of the Website
+
+![image](./tutorial.gif)
+
+## Description
+
+Project aims to create a tutorial.
+
+## Project Skeleton
+
+    react-task-tracker
+    |
+    ├── public
+    │     └── index.html
+    │     └── favicon.ico
+    ├── src
+    │    ├── components
+    │    │       ├── AddTutorial.jsx
+    │    │       ├── EditTutorial.jsx
+    │    │       ├── Loading.jsx
+    │    │       └── TutorialList.jsx
+    │    ├── img
+    │    │    └── loading.jpg
+    │    ├── pages
+    │    │    └── Home.jpx
+    │    ├── App.css
+    │    ├── App.js
+    │    └── index.js
+    ├── .gitignore
+    ├── package.json
+    ├── README.md
+    ├── tutorial.gif
+    └── yarn.lock
+
+## Overview
+
+I mastered HTML, CSS, React and Bootstrap features in this project. You can see the visual representation of the website above.
+
 # API Base URLs
-
-## https://tutorials-api-cw.herokuapp.com/api/tutorials
-
-## https://axios-example-cw.herokuapp.com/api/tutorials
 
 ## https://cw-axios-example.herokuapp.com/api/tutorials
 
@@ -16,7 +52,3 @@
 - DELETE `api/tutorials` remove all Tutorials
 - GET `api/tutorials/published` find all published Tutorials
 - GET `api/tutorials?title=[keyword]` find all Tutorials which title contains 'keyword'
-
-# Deployed Frontend
-
-## https://axios-example.netlify.app/
